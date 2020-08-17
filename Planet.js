@@ -26,20 +26,20 @@ class Planet {
         return this.mesh;
     }
 
-    // move(target) {
-    //     this.startPos = this.mesh.position;
-    //     this.endPos = this.mesh.position;
-    // }
+    move(target) {
+        this.startPos = this.afterFirstTime ? this.mesh.position.clone() : target.clone();
+        this.endPos = target.clone();
+        this.t = 0;
+        this.afterFirstTime = true;
+    }
     update(deltaTime) {
-        if (this.target && this.mesh) {
-            // console.log(this.target.toArray().map(x => Math.round(x * 1000) / 1000), this.mesh.position.toArray().map(x => Math.round(x * 1000) / 1000));
-            const way = new THREE.Vector3().subVectors(this.target, this.mesh.position);
-            const len = way.length();
-            if (len < 0.0001 || (100 * deltaTime / len) > 0.9999) {
-                this.mesh.position.copy(this.target);
-                this.target = undefined;
+        if (this.mesh && this.endPos) {
+            this.t += 2 * deltaTime;
+            if (this.t > 0.9999) {
+                this.mesh.position.copy(this.endPos);
+                this.startPos = this.endPos = this.t = undefined;
             } else {
-                this.mesh.position.addScaledVector(way, (100 * deltaTime / len));
+                this.mesh.position.lerpVectors(this.startPos, this.endPos, this.t);
             }
         }
     }
