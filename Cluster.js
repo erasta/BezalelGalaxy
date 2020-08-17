@@ -23,7 +23,11 @@ class Cluster {
         return ret;
     }
     update(deltaTime) {
-        this.focus.rotateOnWorldAxis(this.focus.position.clone().normalize().cross(this.focus.up), 0.3 * deltaTime);
+        if (this.planets && this.planets.length && !this.planets[0].endPos) {
+            this.axis = this.axis || new THREE.Vector3();
+            this.axis.copy(this.focus.position).normalize().cross(this.focus.up)
+            this.focus.rotateOnWorldAxis(this.axis, 0.3 * deltaTime);
+        }
     }
     arrange(planets, anchor, scene) {
         this.focus = new THREE.Object3D();
