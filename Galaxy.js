@@ -14,7 +14,8 @@ class Galaxy {
 
     planetsByField(field) {
         const uniqValues = [...new Set(this.planets.map(pl => pl[field]))];
-        return uniqValues.map(val => {
+        const uniqSorted = uniqValues.sort((a, b) => parseInt(a) - parseInt(b));
+        return uniqSorted.map(val => {
             return { val: val, planets: this.planets.filter(pl => pl[field] === val) };
         });
     }
@@ -32,6 +33,7 @@ class Galaxy {
         });
         this.orbit = new Orbit();
         this.orbit.show(scene);
+        this.changeLayout('sizes');
     }
     changeLayout(newLayout) {
         const lay = newLayout.toLowerCase()
