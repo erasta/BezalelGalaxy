@@ -11,15 +11,15 @@ export class Planet {
     show(scene, pos) {
         var material = new THREE.MeshStandardMaterial({});
         // var material = new THREE.MeshNormalMaterial();
-        var mesh = new THREE.Mesh(new THREE.SphereGeometry(this.size, 32, 32), material);
-        mesh.castShadow = true;
-        mesh.receiveShadow = true;
+        this.mesh = new THREE.Mesh(new THREE.SphereGeometry(this.size, 32, 32), material);
+        this.mesh.castShadow = true;
+        this.mesh.receiveShadow = true;
         if (pos) {
-            mesh.position = pos;
+            this.mesh.position = pos;
         } else {
-            mesh.position.set((this.distance - 4) * 30, (this.theme - 4) * 30, 0);
+            this.mesh.position.set((this.distance - 4) * 30, (this.theme - 4) * 30, 0);
         }
-        scene.add(mesh);
-        return mesh;
+        scene.add(this.mesh);
+        return this.mesh;
     }
 }

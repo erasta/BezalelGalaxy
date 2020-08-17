@@ -1,6 +1,6 @@
 import { Galaxy } from './galaxy.js';
 
-const galaxy = new Galaxy().create('/planets.json');
+const galaxy = new Galaxy().read('/planets.json');
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0.4, 0.4, 0.4);
@@ -33,6 +33,9 @@ scene.add(new THREE.AmbientLight(0xfbeabe, 0.5));
 camera.position.set(0, -70, -300);
 
 galaxy.waitForShow(scene);
+document.getElementById('distances').addEventListener("click", (() => {
+    galaxy.changeLayout('distances');
+}).bind(this));
 
 let lastCameraPos;
 const animate = (scene, camera, renderer, controls) => {
