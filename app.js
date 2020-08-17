@@ -3,7 +3,7 @@
 const galaxy = new Galaxy().create('/planets.json');
 
 const scene = new THREE.Scene();
-// scene.background.setRGB(0.4, 0.4, 0.4);
+scene.background = new THREE.Color(0.4, 0.4, 0.4);
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.up.set(0, -1, 0);
 
@@ -30,7 +30,7 @@ setLight(new THREE.SpotLight(0xbdebfa, 0.7), -200, -300, 100);
 setLight(new THREE.SpotLight(0xfbeabe, 0.7), 100, -300, -200);
 scene.add(new THREE.AmbientLight(0xfbeabe, 0.5));
 
-camera.position.set(0.753, -0.627, -1.152);
+camera.position.set(200, 0, -200);
 
 galaxy.show(scene);
 
@@ -40,7 +40,7 @@ const animate = (scene, camera, renderer, controls) => {
     controls.update();
 
     if (!lastCameraPos || camera.position.manhattanDistanceTo(lastCameraPos) > 0.001) {
-        // console.log(camera.position.toArray().map(x => Math.round(x * 1000) / 1000));//, camera.rotation);
+        console.log(camera.position.toArray().map(x => Math.round(x * 1000) / 1000));//, camera.rotation);
         lastCameraPos = camera.position.clone();
     }
 

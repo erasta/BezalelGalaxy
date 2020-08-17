@@ -19,7 +19,7 @@ class Planet {
         if (pos) {
             mesh.position = pos;
         } else {
-            mesh.position.set(this.distance * 3, 0, 0);
+            mesh.position.set(this.distance * 30, this.theme * 30, 0);
         }
         scene.add(mesh);
     }
