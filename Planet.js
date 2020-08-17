@@ -27,10 +27,9 @@ class Planet {
     }
 
     move(target) {
-        this.t = this.afterFirstTime ? 0 : 1;
-        // this.startPos = this.afterFirstTime ? this.mesh.position.clone() : target.clone();
         this.startPos = this.mesh.position.clone();
         this.endPos = target.clone();
+        this.t = this.afterFirstTime ? 0 : 1;
         this.afterFirstTime = true;
     }
     update(deltaTime) {
