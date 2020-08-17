@@ -25,6 +25,7 @@ class Galaxy {
         this.distances = this.planetsByField("distance");
         this.sizes = this.planetsByField("size");
         this.themes = this.planetsByField("theme");
+        this.ok = true;
     }
 
     show(scene) {
@@ -55,10 +56,10 @@ class Galaxy {
     }
 
     waitForShow(scene) {
-        if (this.planets) {
+        if (this.ok) {
             this.show(scene);
         } else {
-            setTimeout(() => this.show(scene), 100);
+            setTimeout(() => this.waitForShow(scene), 100);
         }
     }
 }
