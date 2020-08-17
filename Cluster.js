@@ -22,15 +22,21 @@ class Cluster {
         }
         return ret;
     }
+    update(deltaTime) {
+
+    }
     arrange(planets, anchor, scene) {
         this.focus = new THREE.Object3D();
         this.focus.position.copy(anchor);
         scene.add(this.focus);
-
-        const positions = this.generate(planets.length);
-        planets.forEach((pl, i) => {
-            if (pl.mesh) this.focus.attach(pl.mesh);
-            pl.move(positions[i], scene);
+        this.positions = this.generate(planets.length);
+        this.planets = planets;
+        return this;
+    }
+    move() {
+        this.planets.forEach((pl, i) => {
+            this.focus.attach(pl.mesh);
+            pl.move(this.positions[i]);
         });
     }
 }
