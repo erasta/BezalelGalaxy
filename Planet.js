@@ -33,13 +33,19 @@ class Planet {
         this.afterFirstTime = true;
     }
     update(deltaTime) {
+        function easeInOutQuad(x) {
+            return x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
+        }
+        function easeInOutCubic(x){
+            return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+        }
         if (this.mesh && this.endPos) {
-            this.t += 2 * deltaTime;
+            this.t += 0.8 * deltaTime;
             if (this.t > 0.9999) {
                 this.mesh.position.copy(this.endPos);
                 this.startPos = this.endPos = this.t = undefined;
             } else {
-                this.mesh.position.lerpVectors(this.startPos, this.endPos, this.t);
+                this.mesh.position.lerpVectors(this.startPos, this.endPos, easeInOutCubic(this.t));
             }
         }
     }
