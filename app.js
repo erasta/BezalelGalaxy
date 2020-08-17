@@ -30,7 +30,7 @@ setLight(new THREE.SpotLight(0xbdebfa, 0.7), -200, -300, 100);
 setLight(new THREE.SpotLight(0xfbeabe, 0.7), 100, -300, -200);
 scene.add(new THREE.AmbientLight(0xfbeabe, 0.5));
 
-camera.position.set(200, 0, -200);
+camera.position.set(0, 0, -300);
 
 galaxy.show(scene);
 
