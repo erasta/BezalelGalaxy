@@ -30,9 +30,9 @@ setLight(new THREE.SpotLight(0xbdebfa, 0.7), -200, -300, 100);
 setLight(new THREE.SpotLight(0xfbeabe, 0.7), 100, -300, -200);
 scene.add(new THREE.AmbientLight(0xfbeabe, 0.5));
 
-camera.position.set(0, 0, -300);
+camera.position.set(0, -70, -300);
 
-galaxy.show(scene);
+galaxy.waitForShow(scene);
 
 let lastCameraPos;
 const animate = (scene, camera, renderer, controls) => {

@@ -20,5 +20,6 @@ export class Planet {
             mesh.position.set((this.distance - 4) * 30, (this.theme - 4) * 30, 0);
         }
         scene.add(mesh);
+        return mesh;
     }
 }
