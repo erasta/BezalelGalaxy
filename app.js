@@ -13,6 +13,7 @@ renderer.setSize(renderer.domElement.clientWidth, renderer.domElement.clientHeig
 THREEx.WindowResize(renderer, camera);
 
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.autoRotate = true;
 
 scene.castShadow = true;
 scene.receiveShadow = true;
