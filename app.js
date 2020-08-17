@@ -4,7 +4,7 @@ const galaxy = new Galaxy().read('./planets.json');
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0.8, 0.8, 0.8);
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.up.set(0, -1, 0);
 
 const container = document.getElementById('three');
@@ -32,7 +32,7 @@ setLight(new THREE.SpotLight(0xbdebfa, 0.7), -200, -300, 100);
 setLight(new THREE.SpotLight(0xfbeabe, 0.7), 100, -300, -200);
 scene.add(new THREE.AmbientLight(0xfbeabe, 0.5));
 
-camera.position.set(0, -70, -300);
+camera.position.set(0, -150, -450);
 
 galaxy.waitForShow(scene);
 document.getElementById('distances').addEventListener("click", (() => {
