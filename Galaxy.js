@@ -54,6 +54,13 @@ class Galaxy {
         if (this.planets) {
             this.planets.forEach(pl => pl.update(deltaTime));
         }
+        if (this.clusters) {
+            Object.keys(galaxy.clusters).forEach(k => {
+                galaxy.clusters[k].forEach(c => {
+                    c.update(deltaTime);
+                });
+            });
+        }
     }
 
     waitForShow(scene) {

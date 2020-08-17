@@ -23,7 +23,7 @@ class Cluster {
         return ret;
     }
     update(deltaTime) {
-
+        this.focus.rotateOnWorldAxis(this.focus.position.clone().normalize().cross(this.focus.up), 0.3 * deltaTime);
     }
     arrange(planets, anchor, scene) {
         this.focus = new THREE.Object3D();
