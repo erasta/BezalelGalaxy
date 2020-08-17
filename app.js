@@ -1,6 +1,6 @@
 'use strict'
 
-const galaxy = new Galaxy().read('/planets.json');
+const galaxy = new Galaxy().read('./planets.json');
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0.4, 0.4, 0.4);
