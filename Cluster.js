@@ -25,7 +25,7 @@ class Cluster {
     arrange(planets, anchor) {
         const positions = this.generate(planets.length);
         planets.forEach((pl, i) => {
-            pl.mesh.position.copy(positions[i].add(anchor));
+            pl.target = positions[i].add(anchor);
         });
     }
 }

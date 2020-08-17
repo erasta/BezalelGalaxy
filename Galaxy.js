@@ -54,6 +54,11 @@ class Galaxy {
             })
         }
     }
+    update(deltaTime) {
+        if (this.planets) {
+            this.planets.forEach(pl => pl.update(deltaTime));
+        }
+    }
 
     waitForShow(scene) {
         if (this.ok) {

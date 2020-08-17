@@ -1,0 +1,111 @@
+[
+    {
+        "id": 1599,
+        "date": "2020-08-15T19:13:07",
+        "date_gmt": "2020-08-15T16:13:07",
+        "guid": {
+            "rendered": "http:\/\/arch2020.s193.upress.link\/?p=1599"
+        },
+        "modified": "2020-08-16T10:39:09",
+        "modified_gmt": "2020-08-16T07:39:09",
+        "slug": "iterative-new-york",
+        "status": "publish",
+        "type": "post",
+        "link": "http:\/\/arch2020.s193.upress.link\/iterative-new-york\/",
+        "title": {
+            "rendered": "ITERATIVE NEW YORK"
+        },
+        "content": {
+            "rendered": "",
+            "protected": false
+        },
+        "excerpt": {
+            "rendered": "",
+            "protected": false
+        },
+        "author": 3,
+        "featured_media": 0,
+        "comment_status": "open",
+        "ping_status": "open",
+        "sticky": false,
+        "template": "",
+        "format": "standard",
+        "meta": [],
+        "categories": [
+            1
+        ],
+        "tags": [],
+        "fields": {
+            "theme": "5",
+            "size": "10",
+            "distance": "9",
+            "image": false,
+            "project_name": "Iterative New York"
+        },
+        "_links": {
+            "self": [
+                {
+                    "href": "http:\/\/arch2020.s193.upress.link\/wp-json\/wp\/v2\/posts\/1599"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "http:\/\/arch2020.s193.upress.link\/wp-json\/wp\/v2\/posts"
+                }
+            ],
+            "about": [
+                {
+                    "href": "http:\/\/arch2020.s193.upress.link\/wp-json\/wp\/v2\/types\/post"
+                }
+            ],
+            "author": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/arch2020.s193.upress.link\/wp-json\/wp\/v2\/users\/3"
+                }
+            ],
+            "replies": [
+                {
+                    "embeddable": true,
+                    "href": "http:\/\/arch2020.s193.upress.link\/wp-json\/wp\/v2\/comments?post=1599"
+                }
+            ],
+            "version-history": [
+                {
+                    "count": 4,
+                    "href": "http:\/\/arch2020.s193.upress.link\/wp-json\/wp\/v2\/posts\/1599\/revisions"
+                }
+            ],
+            "predecessor-version": [
+                {
+                    "id": 2453,
+                    "href": "http:\/\/arch2020.s193.upress.link\/wp-json\/wp\/v2\/posts\/1599\/revisions\/2453"
+                }
+            ],
+            "wp:attachment": [
+                {
+                    "href": "http:\/\/arch2020.s193.upress.link\/wp-json\/wp\/v2\/media?parent=1599"
+                }
+            ],
+            "wp:term": [
+                {
+                    "taxonomy": "category",
+                    "embeddable": true,
+                    "href": "http:\/\/arch2020.s193.upress.link\/wp-json\/wp\/v2\/categories?post=1599"
+                },
+                {
+                    "taxonomy": "post_tag",
+                    "embeddable": true,
+                    "href": "http:\/\/arch2020.s193.upress.link\/wp-json\/wp\/v2\/tags?post=1599"
+                }
+            ],
+            "curies": [
+                {
+                    "name": "wp",
+                    "href": "https:\/\/api.w.org\/{rel}",
+                    "templated": true
+                }
+            ]
+        }
+    }
+]

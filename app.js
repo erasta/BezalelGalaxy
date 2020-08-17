@@ -25,7 +25,7 @@ const setLight = (obj, x, y, z) => {
     return obj;
 };
 
-scene.add( new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 ));
+scene.add(new THREE.HemisphereLight(0xffffbb, 0x080820, 1));
 setLight(new THREE.SpotLight(0xffffff, 1.5), 300, -300, 300);
 setLight(new THREE.SpotLight(0xbdebfa, 0.7), -200, -300, 100);
 setLight(new THREE.SpotLight(0xfbeabe, 0.7), 100, -300, -200);
@@ -44,16 +44,20 @@ document.getElementById('sizes').addEventListener("click", (() => {
     galaxy.changeLayout('sizes');
 }).bind(this));
 
-let lastCameraPos;
+// let lastCameraPos;
+var clock = new THREE.Clock();
 const animate = (scene, camera, renderer, controls) => {
-    requestAnimationFrame(() => { animate(scene, camera, renderer, controls) });
+
+    galaxy.update(clock.getDelta());
+
     controls.update();
 
-    if (!lastCameraPos || camera.position.manhattanDistanceTo(lastCameraPos) > 0.001) {
-        console.log(camera.position.toArray().map(x => Math.round(x * 1000) / 1000));//, camera.rotation);
-        lastCameraPos = camera.position.clone();
-    }
+    // if (!lastCameraPos || camera.position.manhattanDistanceTo(lastCameraPos) > 0.001) {
+    //     console.log(camera.position.toArray().map(x => Math.round(x * 1000) / 1000));//, camera.rotation);
+    //     lastCameraPos = camera.position.clone();
+    // }
 
     renderer.render(scene, camera);
+    requestAnimationFrame(() => { animate(scene, camera, renderer, controls) });
 }
 animate(scene, camera, renderer, controls);
