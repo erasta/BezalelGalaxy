@@ -27,18 +27,13 @@ class Planet {
     }
 
     move(target) {
-        this.startPos = this.afterFirstTime ? this.mesh.position.clone() : target.clone();
+        this.t = this.afterFirstTime ? 0 : 1;
+        // this.startPos = this.afterFirstTime ? this.mesh.position.clone() : target.clone();
+        this.startPos = this.mesh.position.clone();
         this.endPos = target.clone();
-        this.t = 0;
         this.afterFirstTime = true;
     }
     update(deltaTime) {
-        function easeInOutQuad(x) {
-            return x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
-        }
-        function easeInOutCubic(x){
-            return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
-        }
         if (this.mesh && this.endPos) {
             this.t += 0.8 * deltaTime;
             if (this.t > 0.9999) {
