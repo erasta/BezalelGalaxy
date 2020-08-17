@@ -12,4 +12,14 @@ class Galaxy {
             });
         return this;
     }
+
+    show(scene) {
+        if (this.planets) {
+            this.planets.forEach(pl => {
+                pl.show(scene);
+            });
+        } else {
+            setTimeout(() => this.show(scene), 100);
+        }
+    }
 }

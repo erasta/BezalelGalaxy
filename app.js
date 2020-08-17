@@ -30,14 +30,9 @@ setLight(new THREE.SpotLight(0xbdebfa, 0.7), -200, -300, 100);
 setLight(new THREE.SpotLight(0xfbeabe, 0.7), 100, -300, -200);
 scene.add(new THREE.AmbientLight(0xfbeabe, 0.5));
 
-const geometry = new THREE.Geometry();
-var material = new THREE.MeshStandardMaterial({ vertexColors: true });
-// var material = new THREE.MeshNormalMaterial();
-var mesh = new THREE.Mesh(new THREE.SphereGeometry(0.5, 32, 32), material);
-mesh.castShadow = true;
-mesh.receiveShadow = true;
-scene.add(mesh);
 camera.position.set(0.753, -0.627, -1.152);
+
+galaxy.show(scene);
 
 let lastCameraPos;
 const animate = (scene, camera, renderer, controls) => {
