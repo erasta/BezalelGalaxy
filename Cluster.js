@@ -1,4 +1,6 @@
-export class Cluster {
+'use strict'
+
+class Cluster {
     constructor(maxRadius = 50, minRadius = 15, minDistance = 5) {
         this.maxRadius = maxRadius;
         this.minRadius = minRadius;

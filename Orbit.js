@@ -1,4 +1,6 @@
-export class Orbit {
+'use strict'
+
+class Orbit {
     constructor(radius = 150) {
         this.radius = radius;
     }

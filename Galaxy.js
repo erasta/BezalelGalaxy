@@ -1,8 +1,6 @@
-import { Planet } from './Planet.js';
-import { Orbit } from './Orbit.js';
-import { Cluster } from './Cluster.js';
+'use strict'
 
-export class Galaxy {
+class Galaxy {
     read(json_url) {
         fetch(json_url)
             .then(response => {

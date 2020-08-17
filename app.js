@@ -1,4 +1,4 @@
-import { Galaxy } from './galaxy.js';
+'use strict'
 
 const galaxy = new Galaxy().read('/planets.json');
 
@@ -7,7 +7,8 @@ scene.background = new THREE.Color(0.4, 0.4, 0.4);
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.up.set(0, -1, 0);
 
-const renderer = new THREE.WebGLRenderer({ antialias: true, canvas: document.getElementById('three') });
+const container = document.getElementById('three');
+const renderer = new THREE.WebGLRenderer({ antialias: true, canvas: container });
 renderer.setSize(renderer.domElement.clientWidth, renderer.domElement.clientHeight);
 THREEx.WindowResize(renderer, camera);
 

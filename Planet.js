@@ -1,4 +1,6 @@
-export class Planet {
+'use strict'
+
+class Planet {
     constructor(json) {
         const fields = json.fields;
         this.distance = parseInt(fields.distance);
