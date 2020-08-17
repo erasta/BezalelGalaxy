@@ -36,6 +36,12 @@ galaxy.waitForShow(scene);
 document.getElementById('distances').addEventListener("click", (() => {
     galaxy.changeLayout('distances');
 }).bind(this));
+document.getElementById('themes').addEventListener("click", (() => {
+    galaxy.changeLayout('themes');
+}).bind(this));
+document.getElementById('sizes').addEventListener("click", (() => {
+    galaxy.changeLayout('sizes');
+}).bind(this));
 
 let lastCameraPos;
 const animate = (scene, camera, renderer, controls) => {

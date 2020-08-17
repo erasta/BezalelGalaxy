@@ -42,6 +42,16 @@ export class Galaxy {
                 new Cluster().arrange(this.distances[i].planets, pos);
             })
         }
+        if (lay === 'sizes') {
+            this.orbit.circle(this.sizes.length).map((pos, i) => {
+                new Cluster().arrange(this.sizes[i].planets, pos);
+            })
+        }
+        if (lay === 'themes') {
+            this.orbit.circle(this.themes.length).map((pos, i) => {
+                new Cluster().arrange(this.themes[i].planets, pos);
+            })
+        }
     }
 
     waitForShow(scene) {
