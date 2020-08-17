@@ -1,4 +1,4 @@
-'use strict';
+import { Galaxy } from './galaxy.js';
 
 const galaxy = new Galaxy().create('/planets.json');
 

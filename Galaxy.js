@@ -1,6 +1,6 @@
-'use strict'
+import { Planet } from './Planet.js';
 
-class Galaxy {
+export class Galaxy {
     create(json_url) {
         fetch(json_url)
             .then(response => {
