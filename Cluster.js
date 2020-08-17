@@ -1,7 +1,7 @@
 'use strict'
 
 class Cluster {
-    constructor(maxRadius = 50, minRadius = 15, minDistance = 5) {
+    constructor(maxRadius = 50, minRadius = 0, minDistance = 15) {
         this.maxRadius = maxRadius;
         this.minRadius = minRadius;
         this.minDistance = minDistance;
