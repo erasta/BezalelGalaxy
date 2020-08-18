@@ -3,6 +3,7 @@
 class Cluster {
     constructor(maxRadius = 50) {
         this.maxRadius = maxRadius;
+        this.needRotate = true;
     }
     gen() {
         const v = new THREE.Vector3(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5);
@@ -11,7 +12,7 @@ class Cluster {
     }
 
     update(deltaTime) {
-        if (this.planets && this.planets.length && !this.planets[0].endPos) {
+        if (this.needRotate && this.planets && this.planets.length && !this.planets[0].endPos) {
             this.axis = this.axis || new THREE.Vector3();
             this.axis.copy(this.focus.position).normalize().cross(this.focus.up)
             this.focus.rotateOnWorldAxis(this.axis, 0.15 * deltaTime);

@@ -60,6 +60,12 @@ class OrbitCluster {
         });
     }
     emphasize(on) {
-
+        if (this.orbit) {
+            if (on) {
+                this.orbit.line.material.color = new THREE.Color('black');
+            } else {
+                this.orbit.line.material.color = new THREE.Color(0.6, 0.6, 0.6);
+            }
+        }
     }
 }
