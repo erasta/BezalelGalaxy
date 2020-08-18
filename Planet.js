@@ -15,6 +15,7 @@ class Planet {
         // var material = new THREE.MeshStandardMaterial({});
         // var material = new THREE.MeshNormalMaterial();
         this.mesh = new THREE.Mesh(new THREE.SphereGeometry(this.size, 32, 32), Planet.materials[this.theme]);
+        this.mesh.planet = this;
         this.mesh.castShadow = true;
         this.mesh.receiveShadow = true;
         if (pos) {

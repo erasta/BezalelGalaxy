@@ -32,6 +32,7 @@ class Galaxy {
         this.planets.forEach(pl => {
             pl.show(scene);
         });
+        this.planetsMeshes = this.planets.map(pl => pl.mesh);
 
         this.orbit = new Orbit();
         this.orbit.show(scene);

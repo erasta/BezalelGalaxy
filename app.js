@@ -46,6 +46,24 @@ document.getElementById('sizes').addEventListener("click", (() => {
     galaxy.changeLayout('sizes');
 }).bind(this));
 
+let raycaster = new THREE.Raycaster();
+let mouse = new THREE.Vector2();
+let screenPos = new THREE.Vector2();
+
+container.addEventListener('mousemove', (event) => {
+    screenPos.set(event.clientX, event.clientY);
+    const x = (event.clientX - container.offsetLeft) / container.width * 2 - 1;
+    const y = -(event.clientY - container.offsetTop) / container.height * 2 + 1;
+    mouse.set(x, y);
+}, false);
+
+// const marker = new THREE.Mesh(new THREE.SphereGeometry());
+// scene.add(marker);
+
+const projectName = document.getElementById('project-name');
+const projectImage = document.getElementById('project-image');
+const projectDetails = document.getElementById('project-details');
+
 // let lastCameraPos;
 var clock = new THREE.Clock();
 const animate = (scene, camera, renderer, controls) => {
@@ -53,6 +71,19 @@ const animate = (scene, camera, renderer, controls) => {
     galaxy.update(clock.getDelta());
 
     controls.update();
+
+    raycaster.setFromCamera(mouse, camera);
+    const inter = raycaster.intersectObjects(galaxy.planetsMeshes || []);
+    if (inter.length > 0) {
+        // marker.position.copy(inter[0].point);
+        projectName.textContent = inter[0].object.planet.project_name;
+        projectDetails.style.display = "";
+        projectDetails.style.left = screenPos.x + "px";
+        projectDetails.style.top = screenPos.y + "px";
+        projectImage.src = inter[0].object.planet.image || "";
+    } else {
+        projectDetails.style.display = "none";
+    }
 
     // if (!lastCameraPos || camera.position.manhattanDistanceTo(lastCameraPos) > 0.001) {
     //     console.log(camera.position.toArray().map(x => Math.round(x * 1000) / 1000));//, camera.rotation);

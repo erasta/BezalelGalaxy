@@ -18,9 +18,12 @@
 </head>
 
 <body>
-    <script src="https://unpkg.com/three@0.112.1/build/three.js"></script>
+    <script src="./lib/three.js"></script>
+    <script src="./lib/OrbitControls.js"></script>
+    <script src="./lib/threex.windowresize.js"></script>
+    <!-- <script src="https://unpkg.com/three@0.112.1/build/three.js"></script>
     <script src="https://unpkg.com/three@0.112.1/examples/js/controls/OrbitControls.js"></script>
-    <script src="https://cdn.rawgit.com/jeromeetienne/threex.windowresize/master/threex.windowresize.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/threex.windowresize/master/threex.windowresize.js"></script> -->
     <!-- <button id='grid'>Grid</button> -->
     <button id='sizes'>Sizes</button>
     <button id='themes'>Themes</button>
@@ -30,6 +33,12 @@
         <canvas id="three" style="width:800px; height:600px"></canvas>
     </div>
 
+    <div id="project-details" style="display: none; position: absolute;">
+        <label id="project-name" style="background-color: cornflowerblue"></label>
+        <div style="width: 100%;">
+            <img id="project-image" style="width: 300px;"></label>
+        </div>
+    </div>
 
     <script type="text/javascript" src="./utils.js"></script>
     <script type="text/javascript" src="./Cluster.js"></script>
