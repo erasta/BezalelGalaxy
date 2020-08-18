@@ -43,6 +43,10 @@ class Cluster {
         });
     }
     emphasize(on) {
-
+        // this.planets.forEach((pl, i) => {
+        //     pl.mesh.material.emissive = on ? new THREE.Color('#367c29') : new THREE.Color('black');
+        //     // pl.mesh.material.emissiveIntesity = on ? 0.5 : 0.0;
+        //     // pl.mesh.material.emissive = on ? new THREE.Color('black') : new THREE.Color('white');
+        // });
     }
 }

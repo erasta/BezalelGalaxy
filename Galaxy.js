@@ -70,16 +70,30 @@ class Galaxy {
     }
     emphasizeLayout(layoutName, layoutIndex) {
         console.log(layoutName, layoutIndex);
-        controls.autoRotate = (layoutName !== 'sizes' && layoutName !== 'themes');
+        const oneOrbitLayout = (layoutName === 'sizes' || layoutName === 'themes');
+        controls.autoRotate = !oneOrbitLayout;
         if (this.clusters) {
             ['sizes', 'themes'].forEach(clusterLayoutName => {
                 this.clusters[clusterLayoutName].forEach(c => c.needRotate = controls.autoRotate)
             });
-            Object.keys(this.clusters).forEach(clusterLayoutName => {
-                this.clusters[clusterLayoutName].forEach(c => {
-                    c.emphasize(c.layoutIndex === layoutIndex && clusterLayoutName === layoutName);
-                });
+            this.clusters['distances'].forEach(c => {
+                c.emphasize(c.layoutIndex === layoutIndex && 'distances' === layoutName);
             });
+            this.planets.map(pl => {
+                pl.mesh.material.emissive.set(0, 0, 0);
+            });
+            if (oneOrbitLayout) {
+                this.clusters[layoutName].forEach(c => {
+                    if (c.layoutIndex === layoutIndex) {
+                        c.planets.forEach(pl => {
+                            pl.mesh.material.emissive.set('green');
+                        });
+                    }
+                    // c.emphasize(c.layoutIndex === layoutIndex && 'distances' === layoutName);
+                });
+            }
+            // Object.keys(this.clusters).forEach(clusterLayoutName => {
+            // });
         }
     }
     update(deltaTime) {
