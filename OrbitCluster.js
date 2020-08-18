@@ -17,10 +17,8 @@ class OrbitCluster {
             const v = new THREE.Vector3(Math.random() - 0.5, 0, Math.random() - 0.5);
             v.normalize().multiplyScalar(this.orbitRadius);
             if (this.positions.find((q, i) => q.distanceTo(v) < pl.radius + this.planets[i].radius + 2)) {
-                console.log('no')
                 continue;
             }
-            console.log('good!', this.positions.map(vec2show))
             this.positions.push(v);
         }
 
