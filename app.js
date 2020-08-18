@@ -3,7 +3,7 @@
 const galaxy = new Galaxy().read('./planets.json');
 
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0.8, 0.8, 0.8);
+scene.background = new THREE.Color(1,1,1);
 const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 10000);
 camera.up.set(0, -1, 0);
 

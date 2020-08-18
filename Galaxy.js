@@ -12,6 +12,13 @@ class Galaxy {
         return this;
     }
 
+    nightMode(night) {
+        if (night) {
+            scene.background = new THREE.Color(0, 0, 0);
+        } else {
+            scene.background = new THREE.Color(1, 1, 1);
+        }
+    }
     planetsByField(field) {
         const uniqValues = [...new Set(this.planets.map(pl => pl[field]))];
         const uniqSorted = uniqValues.sort((a, b) => parseInt(a) - parseInt(b));

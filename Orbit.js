@@ -13,7 +13,7 @@ class Orbit {
         return arr;
     }
     show(scene) {
-        const material = new THREE.LineBasicMaterial({ color: new THREE.Color(0.6, 0.6, 0.6 ) });
+        const material = new THREE.LineBasicMaterial({ color: new THREE.Color('#ababab') });
         this.line = new THREE.LineLoop(new THREE.Geometry(), material);
         this.line.geometry.vertices = this.circle();
         scene.add(this.line);
