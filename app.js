@@ -47,7 +47,7 @@ document.getElementById('sizes').addEventListener("click", (() => {
 }).bind(this));
 
 let raycaster = new THREE.Raycaster();
-let mouse = new THREE.Vector2();
+let mouse = new THREE.Vector2(-1000, -1000);
 let screenPos = new THREE.Vector2();
 
 container.addEventListener('mousemove', (event) => {
