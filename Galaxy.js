@@ -44,14 +44,20 @@ class Galaxy {
 
         this.clusters = {
             sizes: this.orbit.circle(this.sizes.length).map((pos, i) => {
-                return new Cluster().arrange(this.sizes[i].planets, pos, scene);
+                const c = new Cluster().arrange(this.sizes[i].planets, pos, scene);
+                c.layoutIndex = pos.val;
+                return c;
             }),
             themes: this.orbit.circle(this.themes.length).map((pos, i) => {
-                return new Cluster().arrange(this.themes[i].planets, pos, scene);
+                const c = new Cluster().arrange(this.themes[i].planets, pos, scene);
+                c.layoutIndex = pos.val;
+                return c;
             }),
             distances: this.orbit.circle(this.distances.length).map((pos, i) => {
                 const rad = minOrbit + (this.orbit.radius - minOrbit) * this.distances[i].planets[0].distance / maxDist;
-                return new OrbitCluster(rad, orbitSize).arrange(this.distances[i].planets, scene);
+                const c = new OrbitCluster(rad, orbitSize).arrange(this.distances[i].planets, scene);
+                c.layoutIndex = pos.val;
+                return c;
             }),
         }
         this.changeLayout('sizes');
@@ -64,6 +70,14 @@ class Galaxy {
     }
     emphasizeLayout(layoutName, layoutIndex) {
         console.log(layoutName, layoutIndex);
+        if (this.clusters) {
+            Object.keys(this.clusters).forEach(clusterLayoutName => {
+                this.clusters[clusterLayoutName].forEach(c => {
+                    c.emphasize(c.layoutIndex === layoutIndex && clusterLayoutName === layoutName);
+                });
+            });
+        }
+        controls.autoRotate = (layoutName !== 'sizes' && layoutName !== 'themes');
     }
     update(deltaTime) {
         if (this.planets) {

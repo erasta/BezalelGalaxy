@@ -41,4 +41,7 @@ class Cluster {
             pl.move(this.positions[i]);
         });
     }
+    emphasize(on) {
+
+    }
 }

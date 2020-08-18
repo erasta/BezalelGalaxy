@@ -14,6 +14,10 @@
             width: 100%;
             height: 100%
         }
+        label {
+            padding: 10px;
+            background: red;
+        }
     </style>
 </head>
 
@@ -25,6 +29,7 @@
     <script src="https://unpkg.com/three@0.112.1/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.rawgit.com/jeromeetienne/threex.windowresize/master/threex.windowresize.js"></script> -->
     <!-- <button id='grid'>Grid</button> -->
+    <br />
     <button id='sizes' onclick="galaxy.changeLayout('sizes');">Sizes</button>
     <label id='sizes1' onmouseover="galaxy.emphasizeLayout('sizes', 1)" onmouseout="galaxy.emphasizeLayout()">1</label>
     <label id='sizes2' onmouseover="galaxy.emphasizeLayout('sizes', 2)" onmouseout="galaxy.emphasizeLayout()">2</label>
@@ -37,9 +42,10 @@
     <label id='sizes9' onmouseover="galaxy.emphasizeLayout('sizes', 9)" onmouseout="galaxy.emphasizeLayout()">9</label>
     <label id='sizes10' onmouseover="galaxy.emphasizeLayout('sizes', 10)" onmouseout="galaxy.emphasizeLayout()">10</label>
     <br />
+    <br />
     <button id='themes' onclick="galaxy.changeLayout('themes');">Themes</button>
-    <label id='themes2' onmouseover="galaxy.emphasizeLayout('themes', 2)" onmouseout="galaxy.emphasizeLayout()">2</label>
     <label id='themes1' onmouseover="galaxy.emphasizeLayout('themes', 1)" onmouseout="galaxy.emphasizeLayout()">1</label>
+    <label id='themes2' onmouseover="galaxy.emphasizeLayout('themes', 2)" onmouseout="galaxy.emphasizeLayout()">2</label>
     <label id='themes3' onmouseover="galaxy.emphasizeLayout('themes', 3)" onmouseout="galaxy.emphasizeLayout()">3</label>
     <label id='themes4' onmouseover="galaxy.emphasizeLayout('themes', 4)" onmouseout="galaxy.emphasizeLayout()">4</label>
     <label id='themes5' onmouseover="galaxy.emphasizeLayout('themes', 5)" onmouseout="galaxy.emphasizeLayout()">5</label>
@@ -48,6 +54,7 @@
     <label id='themes8' onmouseover="galaxy.emphasizeLayout('themes', 8)" onmouseout="galaxy.emphasizeLayout()">8</label>
     <label id='themes9' onmouseover="galaxy.emphasizeLayout('themes', 9)" onmouseout="galaxy.emphasizeLayout()">9</label>
     <label id='themes10' onmouseover="galaxy.emphasizeLayout('themes', 10)" onmouseout="galaxy.emphasizeLayout()">10</label>
+    <br />
     <br />
     <button id='distances' onclick="galaxy.changeLayout('distances');">Distances</button>
     <label id='distances1' onmouseover="galaxy.emphasizeLayout('distances', 1)" onmouseout="galaxy.emphasizeLayout()">1</label>
@@ -60,6 +67,7 @@
     <label id='distances8' onmouseover="galaxy.emphasizeLayout('distances', 8)"  onmouseout="galaxy.emphasizeLayout()">8</label>
     <label id='distances9' onmouseover="galaxy.emphasizeLayout('distances', 9)"  onmouseout="galaxy.emphasizeLayout()">9</label>
     <label id='distances10' onmouseover="galaxy.emphasizeLayout('distances', 10)"  onmouseout="galaxy.emphasizeLayout()">10</label>
+    <br />
     <br />
 
     <div>

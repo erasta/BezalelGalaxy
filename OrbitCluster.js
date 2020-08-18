@@ -59,4 +59,7 @@ class OrbitCluster {
             pl.move(this.positions[i]);
         });
     }
+    emphasize(on) {
+
+    }
 }
