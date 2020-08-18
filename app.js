@@ -33,7 +33,7 @@ setLight(new THREE.SpotLight(0xbdebfa, 0.7), -200, -300, 100);
 setLight(new THREE.SpotLight(0xfbeabe, 0.7), 100, -300, -200);
 scene.add(new THREE.AmbientLight(0xfbeabe, 0.5));
 
-camera.position.set(0, -150, -450);
+camera.position.set(0, -200, 600);
 
 galaxy.waitForShow(scene);
 document.getElementById('distances').addEventListener("click", (() => {
@@ -64,7 +64,7 @@ const projectName = document.getElementById('project-name');
 const projectImage = document.getElementById('project-image');
 const projectDetails = document.getElementById('project-details');
 
-// let lastCameraPos;
+let lastCameraPos;
 var clock = new THREE.Clock();
 const animate = (scene, camera, renderer, controls) => {
 
@@ -85,10 +85,10 @@ const animate = (scene, camera, renderer, controls) => {
         projectDetails.style.display = "none";
     }
 
-    // if (!lastCameraPos || camera.position.manhattanDistanceTo(lastCameraPos) > 0.001) {
-    //     console.log(camera.position.toArray().map(x => Math.round(x * 1000) / 1000));//, camera.rotation);
-    //     lastCameraPos = camera.position.clone();
-    // }
+    if (!lastCameraPos || camera.position.manhattanDistanceTo(lastCameraPos) > 0.001) {
+        console.log(camera.position.toArray().map(x => Math.round(x * 1000) / 1000));//, camera.rotation);
+        lastCameraPos = camera.position.clone();
+    }
 
     renderer.render(scene, camera);
     requestAnimationFrame(() => { animate(scene, camera, renderer, controls) });
