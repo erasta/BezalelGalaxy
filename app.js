@@ -37,15 +37,17 @@ scene.add(new THREE.AmbientLight(0xffffff, 0.8));
 camera.position.set(0, -200, 600);
 
 galaxy.waitForShow(scene);
-document.getElementById('distances').addEventListener("click", (() => {
-    galaxy.changeLayout('distances');
-}).bind(this));
-document.getElementById('themes').addEventListener("click", (() => {
-    galaxy.changeLayout('themes');
-}).bind(this));
-document.getElementById('sizes').addEventListener("click", (() => {
-    galaxy.changeLayout('sizes');
-}).bind(this));
+
+['distances', 'themes', 'sizes'].forEach(layoutName => {
+    document.getElementById(layoutName).addEventListener("click", (() => {
+        galaxy.changeLayout(layoutName);
+    }).bind(this));
+    for (let i = 1; i <= 10; ++i) {
+        document.getElementById(layoutName+i).addEventListener("mouseover", (() => {
+            galaxy.emphasizeLayout(layoutName, i);
+        }).bind(this));
+    }
+});
 
 let raycaster = new THREE.Raycaster();
 let mouse = new THREE.Vector2(-1000, -1000);

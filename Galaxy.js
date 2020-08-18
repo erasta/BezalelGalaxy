@@ -62,6 +62,9 @@ class Galaxy {
             this.clusters['distances'].forEach(c => c.moveOut());
         }
     }
+    emphasizeLayout(layoutName, layoutIndex) {
+        console.log(layoutName, layoutIndex);
+    }
     update(deltaTime) {
         if (this.planets) {
             this.planets.forEach(pl => pl.update(deltaTime));
