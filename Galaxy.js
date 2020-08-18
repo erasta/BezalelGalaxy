@@ -28,16 +28,20 @@ class Galaxy {
         this.distances = this.planetsByField("distance");
         this.sizes = this.planetsByField("size");
         this.themes = this.planetsByField("theme");
+        const maxDist = Math.max(...galaxy.distances.map(d => d.val));
 
         this.planets.forEach(pl => {
             pl.show(scene);
         });
         this.planetsMeshes = this.planets.map(pl => pl.mesh);
+        const maxRadius = Math.max(...this.planets.map(pl => pl.radius));
 
-        this.orbit = new Orbit();
+        const minOrbit = 30;
+        const orbitSize = (maxRadius * 2 + 2) * maxDist + minOrbit;
+        console.log('orbit', minOrbit, orbitSize);
+        this.orbit = new Orbit(orbitSize);
         this.orbit.show(scene);
 
-        const maxDist = Math.max(...galaxy.distances.map(d => d.val));
         this.clusters = {
             sizes: this.orbit.circle(this.sizes.length).map((pos, i) => {
                 return new Cluster().arrange(this.sizes[i].planets, pos, scene);
@@ -46,7 +50,7 @@ class Galaxy {
                 return new Cluster().arrange(this.themes[i].planets, pos, scene);
             }),
             distances: this.orbit.circle(this.distances.length).map((pos, i) => {
-                const rad = 30 + (this.orbit.radius - 30) * this.distances[i].planets[0].distance / maxDist;
+                const rad = minOrbit + (this.orbit.radius - minOrbit) * this.distances[i].planets[0].distance / maxDist;
                 return new OrbitCluster(rad).arrange(this.distances[i].planets, scene);
             }),
         }

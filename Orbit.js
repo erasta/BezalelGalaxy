@@ -1,7 +1,7 @@
 'use strict'
 
 class Orbit {
-    constructor(radius = 150) {
+    constructor(radius = 270) {
         this.radius = radius;
     }
     at(t) {
