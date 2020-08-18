@@ -8,13 +8,14 @@ class Planet {
         this.project_name = fields.project_name;
         this.size = parseInt(fields.size);
         this.theme = parseInt(fields.theme);
+        this.radius = this.sphereSize(this.size) * 10;
         Planet.materials = Planet.materials || this.themeColors();
     }
 
     show(scene, pos) {
         // var material = new THREE.MeshStandardMaterial({});
         // var material = new THREE.MeshNormalMaterial();
-        this.mesh = new THREE.Mesh(new THREE.SphereGeometry(this.sphereSize(), 32, 32), Planet.materials[this.theme]);
+        this.mesh = new THREE.Mesh(new THREE.SphereGeometry(this.radius, 32, 32), Planet.materials[this.theme]);
         this.mesh.planet = this;
         this.mesh.castShadow = true;
         this.mesh.receiveShadow = true;
@@ -27,9 +28,12 @@ class Planet {
         return this.mesh;
     }
 
-    sphereSize() {
-        Planet.sizes = Planet.sizes || [0, 15, 25, 32.5, 40, 47.5, 55, 62.5, 70, 77.5, 85];
-        return Planet.sizes[this.size] / 8;
+    sphereSize(sz) {
+        if (!Planet.sizes) {
+            Planet.sizes = [0, 15, 25, 32.5, 40, 47.5, 55, 62.5, 70, 77.5, 85];
+            Planet.sizes = Planet.sizes.map(s => s / Math.max(...Planet.sizes));
+        }
+        return Planet.sizes[sz];
     }
 
     move(target) {
