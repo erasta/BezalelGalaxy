@@ -21,7 +21,7 @@ class Galaxy {
     }
     create(json) {
         console.log(json);
-        this.planets = json.map(j => new Planet(j))
+        this.planets = json.map(j => new Planet(j)); //.filter(pl => pl.distance === 3);
     }
 
     show(scene) {
@@ -45,7 +45,7 @@ class Galaxy {
                 return new Cluster().arrange(this.themes[i].planets, pos, scene);
             }),
             distances: this.orbit.circle(this.distances.length).map((pos, i) => {
-                return new Cluster().arrange(this.distances[i].planets, pos, scene);
+                return new OrbitCluster(this.distances[i].planets[0].distance * 15 + 30).arrange(this.distances[i].planets, scene);
             }),
         }
         // this.maxDist = Math.max(...galaxy.distances.map(d => d.val));

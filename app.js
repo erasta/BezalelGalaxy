@@ -10,7 +10,7 @@ camera.up.set(0, -1, 0);
 const container = document.getElementById('three');
 const renderer = new THREE.WebGLRenderer({ antialias: true, canvas: container });
 renderer.setSize(renderer.domElement.clientWidth, renderer.domElement.clientHeight);
-THREEx.WindowResize(renderer, camera);
+// THREEx.WindowResize(renderer, camera);
 
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.autoRotate = true;
