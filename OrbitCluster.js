@@ -25,6 +25,12 @@ class OrbitCluster {
 
         return this;
     }
+    moveIn() {
+        this.focus.visible = true;
+    }
+    moveOut() {
+        this.focus.visible = false;
+    }
     move() {
         this.focus.visible = true;
         this.planets.forEach((pl, i) => {

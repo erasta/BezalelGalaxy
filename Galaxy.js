@@ -58,9 +58,7 @@ class Galaxy {
     }
     changeLayout(newLayout) {
         this.clusters[newLayout.toLowerCase()].forEach(c => c.move());
-        if(newLayout === 'distances') {
-            // this.clusters[newLayout.toLowerCase()].forEach(c => c.foc());
-        }
+        this.clusters['distances'].forEach(c => newLayout === 'distances' ? c.moveIn() : c.moveOut());
     }
     update(deltaTime) {
         if (this.planets) {
