@@ -9,3 +9,6 @@ function easeInOutCubic(x) {
 function vec2show(v) {
     return v.toArray().map(x => Math.round(x * 1000) / 1000);
 }
+function lerp(one, two, t) {
+    return one + (two - one) * t;
+}

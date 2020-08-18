@@ -51,22 +51,24 @@ class Galaxy {
             }),
             distances: this.orbit.circle(this.distances.length).map((pos, i) => {
                 const rad = minOrbit + (this.orbit.radius - minOrbit) * this.distances[i].planets[0].distance / maxDist;
-                return new OrbitCluster(rad).arrange(this.distances[i].planets, scene);
+                return new OrbitCluster(rad, orbitSize).arrange(this.distances[i].planets, scene);
             }),
         }
         this.changeLayout('sizes');
     }
     changeLayout(newLayout) {
         this.clusters[newLayout.toLowerCase()].forEach(c => c.move());
-        this.clusters['distances'].forEach(c => newLayout === 'distances' ? c.moveIn() : c.moveOut());
+        if (newLayout !== 'distances') {
+            this.clusters['distances'].forEach(c => c.moveOut());
+        }
     }
     update(deltaTime) {
         if (this.planets) {
             this.planets.forEach(pl => pl.update(deltaTime));
         }
         if (this.clusters) {
-            Object.keys(galaxy.clusters).forEach(k => {
-                galaxy.clusters[k].forEach(c => {
+            Object.keys(this.clusters).forEach(k => {
+                this.clusters[k].forEach(c => {
                     c.update(deltaTime);
                 });
             });

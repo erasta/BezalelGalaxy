@@ -1,15 +1,26 @@
 'use strict'
 
 class OrbitCluster {
-    constructor(orbitRadius) {
+    constructor(orbitRadius, maxOrbit) {
         this.orbitRadius = orbitRadius;
+        this.maxOrbit = maxOrbit;
     }
     update(deltaTime) {
+        if (this.orbit && this.endScale) {
+            this.t += 0.8 * deltaTime;
+            if (this.t > 0.9999) {
+                this.orbit.line.scale.setScalar(this.endScale);
+                this.startScale = this.endScale = this.t = undefined;
+            } else {
+                this.orbit.line.scale.setScalar(lerp(this.startScale, this.endScale, easeInOutCubic(this.t)));
+            }
+        }
     }
     arrange(planets, scene) {
         this.orbit = new Orbit(this.orbitRadius);
-        this.focus = this.orbit.show(scene);
-        this.focus.visible = false;
+        this.orbit.show(scene);
+        this.orbit.line.scale.setScalar(this.maxOrbit / this.orbitRadius);
+        this.focus = new THREE.Object3D();
         scene.add(this.focus);
         this.planets = planets;
         this.positions = [];
@@ -25,14 +36,22 @@ class OrbitCluster {
 
         return this;
     }
-    moveIn() {
-        this.focus.visible = true;
+    moveOrbitScale(newScale) {
+        if (Math.abs(newScale - this.orbit.line.scale.x) > 0.0001) {
+            this.startScale = this.orbit.line.scale.x;
+            this.endScale = newScale;
+            this.t = 0;
+        } else {
+            this.startScale = this.endScale = this.t = undefined;
+        }
     }
     moveOut() {
-        this.focus.visible = false;
+        this.moveOrbitScale(this.maxOrbit / this.orbitRadius);
     }
     move() {
-        this.focus.visible = true;
+        this.moveOrbitScale(1);
+
+        // this.orbit.line.scale.setScalar(1);
         this.planets.forEach((pl, i) => {
             this.focus.attach(pl.mesh);
             pl.move(this.positions[i]);
