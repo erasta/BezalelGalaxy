@@ -26,7 +26,7 @@ class Cluster {
         if (this.planets && this.planets.length && !this.planets[0].endPos) {
             this.axis = this.axis || new THREE.Vector3();
             this.axis.copy(this.focus.position).normalize().cross(this.focus.up)
-            this.focus.rotateOnWorldAxis(this.axis, 0.3 * deltaTime);
+            this.focus.rotateOnWorldAxis(this.axis, 0.15 * deltaTime);
         }
     }
     arrange(planets, anchor, scene) {
