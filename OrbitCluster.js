@@ -4,6 +4,7 @@ class OrbitCluster {
     constructor(orbitRadius, maxOrbit) {
         this.orbitRadius = orbitRadius;
         this.maxOrbit = maxOrbit;
+        this.rotationSpeed = -this.maxOrbit / this.orbitRadius / 1500;// Math.random() / 100;
     }
     update(deltaTime) {
         if (this.orbit && this.endScale) {
@@ -14,6 +15,9 @@ class OrbitCluster {
             } else {
                 this.orbit.line.scale.setScalar(lerp(this.startScale, this.endScale, easeInOutCubic(this.t)));
             }
+        }
+        if (this.focus) {
+            this.focus.rotateY(this.rotationSpeed);
         }
     }
     arrange(planets, scene) {
@@ -50,8 +54,6 @@ class OrbitCluster {
     }
     move() {
         this.moveOrbitScale(1);
-
-        // this.orbit.line.scale.setScalar(1);
         this.planets.forEach((pl, i) => {
             this.focus.attach(pl.mesh);
             pl.move(this.positions[i]);
