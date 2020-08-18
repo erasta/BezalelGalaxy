@@ -27,11 +27,12 @@ const setLight = (obj, x, y, z) => {
     return obj;
 };
 
-scene.add(new THREE.HemisphereLight(0xffffbb, 0x080820, 1));
-setLight(new THREE.SpotLight(0xffffff, 1.5), 300, -300, 300);
-setLight(new THREE.SpotLight(0xbdebfa, 0.7), -200, -300, 100);
+// scene.add(new THREE.HemisphereLight(0xffffbb, 0x080820, 1));
+// setLight(new THREE.SpotLight(0xffffff, 1.5), 300, -300, 300);
+// setLight(new THREE.SpotLight(0xbdebfa, 0.7), -200, -300, 100);
 setLight(new THREE.SpotLight(0xfbeabe, 0.7), 100, -300, -200);
-scene.add(new THREE.AmbientLight(0xfbeabe, 0.5));
+scene.add(new THREE.AmbientLight(0xffffff, 0.8));
+// scene.add(new THREE.AmbientLight(0xfbeabe, 0.8));
 
 camera.position.set(0, -200, 600);
 
