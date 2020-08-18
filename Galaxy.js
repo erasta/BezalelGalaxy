@@ -54,12 +54,13 @@ class Galaxy {
                 return new OrbitCluster(rad).arrange(this.distances[i].planets, scene);
             }),
         }
-        // this.distanceOrbits = this.distances.map(d => new Orbit(150 * d.val / this.maxDist));
-        // this.distanceOrbits.forEach(o => o.show(scene));
         this.changeLayout('sizes');
     }
     changeLayout(newLayout) {
         this.clusters[newLayout.toLowerCase()].forEach(c => c.move());
+        if(newLayout === 'distances') {
+            // this.clusters[newLayout.toLowerCase()].forEach(c => c.foc());
+        }
     }
     update(deltaTime) {
         if (this.planets) {

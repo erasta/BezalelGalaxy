@@ -7,15 +7,16 @@ class OrbitCluster {
     update(deltaTime) {
     }
     arrange(planets, scene) {
-        this.focus = new THREE.Object3D();
+        this.orbit = new Orbit(this.orbitRadius);
+        this.focus = this.orbit.show(scene);
+        this.focus.visible = false;
         scene.add(this.focus);
         this.planets = planets;
         this.positions = [];
 
         while (this.positions.length < this.planets.length) {
             const pl = this.planets[this.positions.length];
-            const v = new THREE.Vector3(Math.random() - 0.5, 0, Math.random() - 0.5);
-            v.normalize().multiplyScalar(this.orbitRadius);
+            const v = this.orbit.at(Math.random() * Math.PI * 2);
             if (this.positions.find((q, i) => q.distanceTo(v) < pl.radius + this.planets[i].radius + 2)) {
                 continue;
             }
@@ -25,6 +26,7 @@ class OrbitCluster {
         return this;
     }
     move() {
+        this.focus.visible = true;
         this.planets.forEach((pl, i) => {
             this.focus.attach(pl.mesh);
             pl.move(this.positions[i]);

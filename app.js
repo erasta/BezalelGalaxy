@@ -85,10 +85,10 @@ const animate = (scene, camera, renderer, controls) => {
         projectDetails.style.display = "none";
     }
 
-    if (!lastCameraPos || camera.position.manhattanDistanceTo(lastCameraPos) > 0.001) {
-        console.log(camera.position.toArray().map(x => Math.round(x * 1000) / 1000));//, camera.rotation);
-        lastCameraPos = camera.position.clone();
-    }
+    // if (!lastCameraPos || camera.position.manhattanDistanceTo(lastCameraPos) > 0.001) {
+    //     console.log(camera.position.toArray().map(x => Math.round(x * 1000) / 1000));//, camera.rotation);
+    //     lastCameraPos = camera.position.clone();
+    // }
 
     renderer.render(scene, camera);
     requestAnimationFrame(() => { animate(scene, camera, renderer, controls) });
