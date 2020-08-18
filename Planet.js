@@ -14,7 +14,7 @@ class Planet {
     show(scene, pos) {
         // var material = new THREE.MeshStandardMaterial({});
         // var material = new THREE.MeshNormalMaterial();
-        this.mesh = new THREE.Mesh(new THREE.SphereGeometry(this.size, 32, 32), Planet.materials[this.theme]);
+        this.mesh = new THREE.Mesh(new THREE.SphereGeometry(this.sphereSize(), 32, 32), Planet.materials[this.theme]);
         this.mesh.planet = this;
         this.mesh.castShadow = true;
         this.mesh.receiveShadow = true;
@@ -25,6 +25,11 @@ class Planet {
         }
         scene.add(this.mesh);
         return this.mesh;
+    }
+
+    sphereSize() {
+        Planet.sizes = Planet.sizes || [0, 15, 25, 32.5, 40, 47.5, 55, 62.5, 70, 77.5, 85];
+        return Planet.sizes[this.size] / 8;
     }
 
     move(target) {
