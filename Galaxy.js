@@ -17,6 +17,10 @@ class Galaxy {
         scene.background = new THREE.Color(this.night ? '#000000' : '#ffffff');
         document.body.style.background = this.night ? '#000000' : '#ffffff';
     }
+
+    pause() {
+        controls.autoRotate = !controls.autoRotate;
+    }
     planetsByField(field, fillEmpties = false) {
         let values = this.planets.map(pl => pl[field]);
         if (fillEmpties) {
