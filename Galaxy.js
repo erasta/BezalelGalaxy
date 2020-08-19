@@ -19,8 +19,13 @@ class Galaxy {
             scene.background = new THREE.Color(1, 1, 1);
         }
     }
-    planetsByField(field) {
-        const uniqValues = [...new Set(this.planets.map(pl => pl[field]))];
+    planetsByField(field, fillEmpties = false) {
+        let values = this.planets.map(pl => pl[field]);
+        if (fillEmpties) {
+            const m = Math.max(...values);
+            values = values.concat([...Array(m).keys()].map(i => i + 1));
+        }
+        const uniqValues = [...new Set(values)];
         const uniqSorted = uniqValues.sort((a, b) => parseInt(a) - parseInt(b));
         return uniqSorted.map(val => {
             return { val: val, planets: this.planets.filter(pl => pl[field] === val) };
@@ -32,7 +37,7 @@ class Galaxy {
     }
 
     show(scene) {
-        this.distances = this.planetsByField("distance");
+        this.distances = this.planetsByField("distance", true);
         this.sizes = this.planetsByField("size");
         this.themes = this.planetsByField("theme");
         const maxDist = Math.max(...galaxy.distances.map(d => d.val));
@@ -60,10 +65,10 @@ class Galaxy {
                 c.layoutIndex = this.themes[i].val;
                 return c;
             }),
-            distances: this.orbit.circle(this.distances.length).map((pos, i) => {
-                const rad = minOrbit + (this.orbit.radius - minOrbit) * this.distances[i].planets[0].distance / maxDist;
-                const c = new OrbitCluster(rad, orbitSize).arrange(this.distances[i].planets, scene);
-                c.layoutIndex = this.distances[i].val;
+            distances: this.distances.map(dist => {
+                const rad = minOrbit + (this.orbit.radius - minOrbit) * dist.val / maxDist;
+                const c = new OrbitCluster(rad, orbitSize).arrange(dist.planets, scene);
+                c.layoutIndex = dist.val;
                 return c;
             }),
         }
