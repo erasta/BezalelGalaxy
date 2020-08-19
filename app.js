@@ -65,6 +65,7 @@ container.addEventListener('mousemove', (event) => {
 
 const projectName = document.getElementById('project-name');
 const projectImage = document.getElementById('project-image');
+const projectBack = document.getElementById('project-back');
 const projectDetails = document.getElementById('project-details');
 
 let lastCameraPos;
@@ -78,12 +79,14 @@ const animate = (scene, camera, renderer, controls) => {
     raycaster.setFromCamera(mouse, camera);
     const inter = raycaster.intersectObjects(galaxy.planetsMeshes || []);
     if (inter.length > 0) {
+        const planet = inter[0].object.planet;
         // marker.position.copy(inter[0].point);
-        projectName.textContent = inter[0].object.planet.project_name;
+        projectName.textContent = planet.project_name;
+        projectBack.style.backgroundColor = planet.color1.getStyle();
+        projectImage.src = planet.image || "";
         projectDetails.style.display = "";
         projectDetails.style.left = screenPos.x + "px";
         projectDetails.style.top = screenPos.y + "px";
-        projectImage.src = inter[0].object.planet.image || "";
     } else {
         projectDetails.style.display = "none";
     }
