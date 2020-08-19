@@ -29,8 +29,13 @@
     <!-- <script src="https://unpkg.com/three@0.112.1/build/three.js"></script>
     <script src="https://unpkg.com/three@0.112.1/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.rawgit.com/jeromeetienne/threex.windowresize/master/threex.windowresize.js"></script> -->
+    <p>
+        <a class="switch-night" href="#" style="color: green;" onclick="galaxy.nightMode()">תצוגת לילה</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="switch-pause" href="#" style="color: orange;" onclick="galaxy.pause()">השהה</a>
+    </p>
     <!-- <button id='grid'>Grid</button> -->
-    <br />
+    <p>
     <button id='sizes' onclick="galaxy.changeLayout('sizes'); document.querySelectorAll('label').forEach(e=>e.hidden=true); document.querySelectorAll('[id*=\'sizes\']').forEach(e=>e.hidden=false)">Sizes</button>
     <label id='sizes1' onmouseover="galaxy.emphasizeLayout('sizes', 1)" onmouseout="galaxy.emphasizeLayout()" hidden="true">1</label>
     <label id='sizes2' onmouseover="galaxy.emphasizeLayout('sizes', 2)" onmouseout="galaxy.emphasizeLayout()" hidden="true">2</label>
@@ -42,8 +47,8 @@
     <label id='sizes8' onmouseover="galaxy.emphasizeLayout('sizes', 8)" onmouseout="galaxy.emphasizeLayout()" hidden="true">8</label>
     <label id='sizes9' onmouseover="galaxy.emphasizeLayout('sizes', 9)" onmouseout="galaxy.emphasizeLayout()" hidden="true">9</label>
     <label id='sizes10' onmouseover="galaxy.emphasizeLayout('sizes', 10)" onmouseout="galaxy.emphasizeLayout()" hidden="true">10</label>
-    <br />
-    <br />
+    </p>
+    <p>
     <button id='themes' onclick="galaxy.changeLayout('themes'); document.querySelectorAll('label').forEach(e=>e.hidden=true); document.querySelectorAll('[id*=\'themes\']').forEach(e=>e.hidden=false)">Themes</button>
     <label id='themes1' onmouseover="galaxy.emphasizeLayout('themes', 1)" onmouseout="galaxy.emphasizeLayout()" hidden="true">1</label>
     <label id='themes2' onmouseover="galaxy.emphasizeLayout('themes', 2)" onmouseout="galaxy.emphasizeLayout()" hidden="true">2</label>
@@ -55,8 +60,8 @@
     <label id='themes8' onmouseover="galaxy.emphasizeLayout('themes', 8)" onmouseout="galaxy.emphasizeLayout()" hidden="true">8</label>
     <label id='themes9' onmouseover="galaxy.emphasizeLayout('themes', 9)" onmouseout="galaxy.emphasizeLayout()" hidden="true">9</label>
     <label id='themes10' onmouseover="galaxy.emphasizeLayout('themes', 10)" onmouseout="galaxy.emphasizeLayout()" hidden="true">10</label>
-    <br />
-    <br />
+    </p>
+    <p>
     <button id='distances' onclick="galaxy.changeLayout('distances'); document.querySelectorAll('label').forEach(e=>e.hidden=true); document.querySelectorAll('[id*=\'distances\']').forEach(e=>e.hidden=false)">Distances</button>
     <label id='distances1' onmouseover="galaxy.emphasizeLayout('distances', 1)" onmouseout="galaxy.emphasizeLayout()" hidden="true">1</label>
     <label id='distances2' onmouseover="galaxy.emphasizeLayout('distances', 2)"  onmouseout="galaxy.emphasizeLayout()" hidden="true">2</label>
@@ -68,10 +73,7 @@
     <label id='distances8' onmouseover="galaxy.emphasizeLayout('distances', 8)"  onmouseout="galaxy.emphasizeLayout()" hidden="true">8</label>
     <label id='distances9' onmouseover="galaxy.emphasizeLayout('distances', 9)"  onmouseout="galaxy.emphasizeLayout()" hidden="true">9</label>
     <label id='distances10' onmouseover="galaxy.emphasizeLayout('distances', 10)"  onmouseout="galaxy.emphasizeLayout()" hidden="true">10</label>
-    <br />
-    <br />
-    <p><a class="switch-night" href="#" style="color: green;" onclick="galaxy.nightMode()">תצוגת לילה</a></p>
-    <p><a class="switch-pause" href="#" style="color: orange;" onclick="galaxy.pause()">השהה</a></p>
+    </p>
 
     <div>
         <canvas id="three" style="width:800px; height:600px"></canvas>

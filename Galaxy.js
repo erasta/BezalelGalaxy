@@ -20,6 +20,9 @@ class Galaxy {
 
     pause() {
         controls.autoRotate = !controls.autoRotate;
+        Object.keys(this.clusters).forEach(clusterName => {
+            this.clusters[clusterName].forEach(c => c.needRotate = controls.autoRotate)
+        });
     }
     planetsByField(field, fillEmpties = false) {
         let values = this.planets.map(pl => pl[field]);

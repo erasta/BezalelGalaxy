@@ -5,6 +5,7 @@ class OrbitCluster {
         this.orbitRadius = orbitRadius;
         this.maxOrbit = maxOrbit;
         this.rotationSpeed = -this.maxOrbit / this.orbitRadius / 1500;// Math.random() / 100;
+        this.needRotate = true;
     }
     update(deltaTime) {
         if (this.orbit && this.endScale) {
@@ -16,7 +17,7 @@ class OrbitCluster {
                 this.orbit.line.scale.setScalar(lerp(this.startScale, this.endScale, easeInOutCubic(this.t)));
             }
         }
-        if (this.focus) {
+        if (this.focus && this.needRotate) {
             this.focus.rotateY(this.rotationSpeed);
         }
     }
