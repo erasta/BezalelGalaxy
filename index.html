@@ -8,6 +8,7 @@
     <style>
         body {
             margin: 0;
+            background: black
         }
 
         canvas {
@@ -16,7 +17,7 @@
         }
         label {
             padding: 10px;
-            background: red;
+            background: green;
         }
     </style>
 </head>
@@ -77,10 +78,13 @@
     </div>
 
     <div id="project-details" style="display: none; position: absolute;">
-        <div style="width: 100%;">
-            <img id="project-image" style="width: 180px;"></label>
-        </div>
-        <label id="project-name" style="background: #000; color: #fff; width: 100%; padding: 4px 8px;"></label>
+        <div style="background-color: green;">
+            <div style="width: 100%;">
+                <img id="project-image" style="width: 180px; height: auto; opacity: 0.7;"></label>
+            </div>
+            <label id="project-name" style="background: #000; color: #fff; width: 100%; padding: 4px 8px; opacity: 0.7; width: 180px; height: auto;">
+            </label>
+        <div>
     </div>
 
     <script type="text/javascript" src="./utils.js"></script>
