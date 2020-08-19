@@ -12,12 +12,10 @@ class Galaxy {
         return this;
     }
 
-    nightMode(night) {
-        if (night) {
-            scene.background = new THREE.Color(0, 0, 0);
-        } else {
-            scene.background = new THREE.Color(1, 1, 1);
-        }
+    nightMode(mode = 'switch') {
+        this.night = ((mode === 'switch') ? (!this.night) : (!!mode));
+        scene.background = new THREE.Color(this.night ? '#000000' : '#ffffff');
+        document.body.style.background = this.night ? '#000000' : '#ffffff';
     }
     planetsByField(field, fillEmpties = false) {
         let values = this.planets.map(pl => pl[field]);
