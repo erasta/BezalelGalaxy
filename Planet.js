@@ -3,9 +3,10 @@
 class Planet {
     constructor(json) {
         const fields = json.fields;
-        this.distance = parseInt(fields.distance);
         this.image = fields.image;
         this.project_name = fields.project_name;
+        this.link = json.link;
+        this.distance = parseInt(fields.distance);
         this.size = parseInt(fields.size);
         this.theme = parseInt(fields.theme);
         this.radius = this.sphereSize(this.size) * 10;

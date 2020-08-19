@@ -60,12 +60,17 @@ container.addEventListener('mousemove', (event) => {
     mouse.set(x, y);
 }, false);
 
+document.addEventListener('mousedown', (event) => {
+    if (projectLink.href !== '#') projectLink.click();
+}, false);
+
 // const marker = new THREE.Mesh(new THREE.SphereGeometry());
 // scene.add(marker);
 
 const projectName = document.getElementById('project-name');
 const projectImage = document.getElementById('project-image');
 const projectBack = document.getElementById('project-back');
+const projectLink = document.getElementById('project-link');
 const projectDetails = document.getElementById('project-details');
 
 let lastCameraPos;
@@ -87,8 +92,10 @@ const animate = (scene, camera, renderer, controls) => {
         projectDetails.style.display = "";
         projectDetails.style.left = screenPos.x + "px";
         projectDetails.style.top = screenPos.y + "px";
+        projectLink.href = planet.link;
     } else {
         projectDetails.style.display = "none";
+        projectLink.href = "#";
     }
 
     // if (!lastCameraPos || camera.position.manhattanDistanceTo(lastCameraPos) > 0.001) {
