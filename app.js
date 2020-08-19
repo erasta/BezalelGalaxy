@@ -1,6 +1,6 @@
 'use strict'
 
-const galaxy = new Galaxy().read('./planets.json');
+const galaxy = new Galaxy().read(jsonSource);
 
 const scene = new THREE.Scene();
 galaxy.nightMode(true);
