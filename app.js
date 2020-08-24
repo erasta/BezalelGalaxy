@@ -9,6 +9,7 @@ camera.up.set(0, -1, 0);
 
 const container = document.getElementById('three');
 const renderer = new THREE.WebGLRenderer({ antialias: true, canvas: container });
+console.log(renderer.domElement.clientWidth, renderer.domElement.clientHeight);
 renderer.setSize(renderer.domElement.clientWidth, renderer.domElement.clientHeight);
 // THREEx.WindowResize(renderer, camera);
 
@@ -53,19 +54,28 @@ let raycaster = new THREE.Raycaster();
 let mouse = new THREE.Vector2(-1000, -1000);
 let screenPos = new THREE.Vector2();
 
-container.addEventListener('mousemove', (event) => {
-    screenPos.set(event.clientX, event.clientY);
-    const x = (event.clientX - container.offsetLeft) / container.width * 2 - 1;
-    const y = -(event.clientY - container.offsetTop) / container.height * 2 + 1;
+const move = (ex, ey) => {
+    screenPos.set(ex, ey);
+    const x = (ex - container.offsetLeft) / container.width * 2 - 1;
+    const y = -(ey - container.offsetTop) / container.height * 2 + 1;
     mouse.set(x, y);
+};
+
+container.addEventListener('touchmove', (event) => {
+    move(event.targetTouches[0].clientX, event.targetTouches[0].clientY)
 }, false);
 
-document.addEventListener('mousedown', (event) => {
+container.addEventListener('mousemove', (event) => {
+    move(event.clientX, event.clientY)
+}, false);
+
+document.addEventListener('touchstart', () => {
     if (projectLink.href !== '#') projectLink.click();
 }, false);
 
-// const marker = new THREE.Mesh(new THREE.SphereGeometry());
-// scene.add(marker);
+document.addEventListener('mousedown', () => {
+    if (projectLink.href !== '#') projectLink.click();
+}, false);
 
 const projectName = document.getElementById('project-name');
 const projectImage = document.getElementById('project-image');
